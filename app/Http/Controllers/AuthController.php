@@ -41,7 +41,7 @@ class AuthController extends BaseController
                 return $this->out(
                     status: 'Gagal',
                     code: 401, //401 unathorized
-                    error: ['Login gagal'],
+                    error: ['Password yang dimasukkan salah'],
                 );
             }
         }
