@@ -17,12 +17,16 @@ use App\Http\Controllers\ProductController;
 */
 
 
-Route::get('/auth',[AuthController::class,'auth']);
-Route::get('/products',[ProductController::class,'findAll']);
+Route::get('/auth', [AuthController::class, 'auth']);
+
+Route::get('/products', [ProductController::class, 'findAll']);
+
+Route::get('/products/{produk}', [ProductController::class, 'findOne']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/api',function(){
+
+Route::get('/api', function () {
     return "Test";
 });
