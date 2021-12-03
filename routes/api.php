@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\OrdertController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,10 +23,8 @@ Route::get('/products', [ProductController::class, 'findAll']);
 
 Route::get('/products/{produk}', [ProductController::class, 'findOne']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/orders',[OrderController::class,'store']);
 
-Route::get('/api', function () {
-    return "Test";
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
