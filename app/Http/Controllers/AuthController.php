@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Costumers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class AuthController extends Controller
+
+
+class AuthController extends BaseController
 {
     public function auth()
     {
         $authheader = \request()->header('Authorization'); //basiccode
         $keyauth = substr($authheader, 6); //menghilangkan text basic
-
         $plainauth = base64_decode($keyauth); //decode text info login
         $tokenauth = explode(':', $plainauth); //pisahkan password dan email
-
         $email = $tokenauth[0]; //email
         $pass = $tokenauth[1];  //pass
 
-        $data = (new Costumers())->newQuery()->where(['email' => $email])->get(['id', 'first_name', 'last_name', 'email', 'password'])->fist();
+        $data = (new Costumers())->newQuery()->where(['email' => $email])->get(['id', 'first_name', 'last_name', 'email', 'password'])->first();
 
         if ($data == null) //jika data tidak di temukan
         {
