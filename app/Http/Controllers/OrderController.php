@@ -17,7 +17,7 @@ class OrderController extends BaseController
         $order = new Orders();
         $order->order_date = Carbon::now('Asia/Makassar');
         $order->product_id = $products->id;
-        $order->costumers_id = request('costumer_id');
+        $order->costumer_id = request('costumer_id');
         $order->qty= request('qty');
         $order->price= request('price');
 
