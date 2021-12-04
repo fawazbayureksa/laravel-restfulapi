@@ -25,6 +25,8 @@ Route::get('/products/{produk}', [ProductController::class, 'findOne']);
 
 Route::post('/orders',[OrderController::class,'store']);
 
+Route::get('/orders',[OrderController::class,'findAll']);
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
