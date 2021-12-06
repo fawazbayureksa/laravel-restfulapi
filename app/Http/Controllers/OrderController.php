@@ -38,7 +38,7 @@ class OrderController extends BaseController
         if (request()->has('q')) //jika ada query "q" untuk pencarian
         {
             $q = request('q');
-            $order->where('products.title', 'like', "$q");
+            $order->where('products.title', 'like', "%$q%");
         }
         $data = $order->paginate(
             10,
@@ -48,6 +48,42 @@ class OrderController extends BaseController
                 'costumers.last_name', 'costumers.address', 'costumers.city', 'products.title as product_title'
             ]
         );
-        return $this->out(data:$data, status:'OK');
+        return $this->out(data: $data, status: 'OK');
+    }
+
+    public function update(Orders $order)
+    {
+        $products = Products::find(request('product_id'));
+
+        if ($products == null) //jika produk yang dicari tidak ditemukan
+        {
+            return $this->out(status: 'Gagal', code: 404, error: ['Produk tidak ditemukan']);
+        }
+
+        $order->product_id = $products->id;
+        $order->costumer_id = request('costumer_id');
+        $order->qty = request('qty');
+        $order->price = $products->price;
+
+        $hasil = $order->save();
+
+        return $this->out(
+            status: $hasil ? "OK" : 'Gagal',
+            data: $hasil ? $order : null,
+            error: $hasil ? null : ['Gagal mengubah data'],
+            code: $hasil ? 201 : 504
+        );
+    }
+
+    public function delete(Orders $order)
+    {
+        $hasil = $order->delete();
+
+        return $this->out(
+            status: $hasil  ? "OK" : "Gagal",
+            data: $hasil ? $order : null,
+            error: $hasil ? null : ['Gagal menghapus data'],
+            code: $hasil ? 200 : 504,
+        );
     }
 }

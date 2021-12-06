@@ -23,9 +23,13 @@ Route::get('/products', [ProductController::class, 'findAll']);
 
 Route::get('/products/{produk}', [ProductController::class, 'findOne']);
 
-Route::post('/orders',[OrderController::class,'store']);
+Route::post('/orders', [OrderController::class, 'store']);
 
-Route::get('/orders',[OrderController::class,'findAll']);
+Route::get('/orders', [OrderController::class, 'findAll']);
+
+Route::patch('/orders/{order}', [OrderController::class, 'update']);
+
+Route::delete('orders/{order}',[OrderController::class,'delete']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
