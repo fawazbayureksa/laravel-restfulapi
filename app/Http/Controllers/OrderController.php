@@ -9,6 +9,11 @@ use Carbon\Carbon;
 
 class OrderController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('authorization');
+    }
+
     public function store()
     {
         $products = Products::find(\request('product_id'));
