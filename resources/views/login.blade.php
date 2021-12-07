@@ -25,4 +25,6 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ url('/assets/pages/login.js') }}"></script>
 @endsection
