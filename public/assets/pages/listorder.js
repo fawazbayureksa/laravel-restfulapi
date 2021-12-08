@@ -17,11 +17,12 @@ function refreshData() {
                 content += `
                 <tr>
                     <td>${i + 1}</td>
-                    <td>${item.order_date}<br/>${btnhapus}${linkEdit}</td>
+                    <td>${item.order_date}</td>
                     <td>${item.product_title}</td>
                     <td>${item.price}</td>
                     <td>${item.qty}</td>
                     <td>${item.first_name} ${item.last_name}</td>
+                    <td>${btnhapus}${linkEdit}</td>
                 </tr>
             `;
             }
