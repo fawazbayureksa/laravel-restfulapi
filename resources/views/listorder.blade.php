@@ -4,10 +4,11 @@
 
 @section('konten')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card mt-5">
+<div class="container mt-3">
+    @include('modalorder')
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+                <div class="card mt-3">
                     <div class="card-body">
                         <h3>
                             Table Order
