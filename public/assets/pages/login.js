@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", (c) => {
                     'Authorization': "basic " + window.btoa(email + ":" + sandi),
                 },
                 success: (msg) => {
+                  
                     alert(
                         `Selamat datang ${msg.data.first_name} ${msg.data.last_name}`
                     );
