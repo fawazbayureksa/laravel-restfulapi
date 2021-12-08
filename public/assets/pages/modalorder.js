@@ -1,6 +1,6 @@
 function fillCustumer(){
     $.ajax({
-        url:'api/costumers',
+        url:'api/auth',
         method:'GET',
         dataType:'json',
         headers:{ 'token' : window.localStorage['token']},
@@ -14,7 +14,7 @@ function fillCustumer(){
             $('select[name=costumer_id]').html(content);
         },
         error:(res, status, err)=>{
-            alert('terjadi kesalahan baca data isi select custumer')
+            alert('terjadi kesalahan baca data isi select custumer');
         }
 
     });
