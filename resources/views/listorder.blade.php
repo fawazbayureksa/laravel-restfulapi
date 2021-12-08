@@ -5,14 +5,14 @@
 @section('konten')
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-body">
-                        <div class="card-text">
+                        <h3>
                             Table Order
-                        </div>
-                        <table class="table-border table-stripped">
+                        </h3>
+                        <table class="table table-border table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>

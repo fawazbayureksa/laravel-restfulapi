@@ -11,13 +11,13 @@ function refreshData() {
 
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
-                var btnhapus = `<a href="#" class="link-hapus" data-id='${item.id}'>Hapus</a>`;
-                var linkEdit = `<a href="#" class="link-edit" data-id='${item.id}'>Edit</a>`;
+                var btnhapus = `<a href="#" class="btn btn-danger mx-2 link-hapus" data-id='${item.id}'>Hapus</a>`;
+                var linkEdit = `<a href="#" class="btn btn-warning link-edit" data-id='${item.id}'>Edit</a>`;
 
                 content += `
                 <tr>
                     <td>${i + 1}</td>
-                    <td>${item.order_date}<br/>${btnhapus}|${linkEdit}</td>
+                    <td>${item.order_date}<br/>${btnhapus}${linkEdit}</td>
                     <td>${item.product_title}</td>
                     <td>${item.price}</td>
                     <td>${item.qty}</td>
