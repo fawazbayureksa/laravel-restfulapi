@@ -1,13 +1,13 @@
 function fillCustumer(){
     $.ajax({
-        url:'api/orders',
+        url:'api/custumers',
         method:'GET',
         dataType:'json',
         headers:{ 'token' : window.localStorage['token']},
         success:(res)=>{
             var data = res.data.data;
             var content = '';
-            for(var i=0;i<data.length(); i++){
+            for(var i=0;i<data.length; i++){
                 var item = data[i];
                 content+= `<option value='${item.id}'>${item.first_name} ${item.last_name}</option>`
             }
@@ -20,7 +20,25 @@ function fillCustumer(){
     });
 }
 function fillProduct(){
+    $.ajax({
+        url:'api/products',
+        method:'GET',
+        dataType:'json',
+        headers:{ 'token' : window.localStorage['token']},
+        success:(res)=>{
+            var data = res.data.data;
+            var content = '';
+            for(var i=0;i<data.length; i++){
+                var item = data[i];
+                content+= `<option value='${item.id}'>${item.title}</option>`
+            }
+            $('select[name=product_id]').html(content);
+        },
+        error:(res, status, err)=>{
+            alert('terjadi kesalahan baca data isi select product');
+        }
 
+    });
 }
 
 function save(){

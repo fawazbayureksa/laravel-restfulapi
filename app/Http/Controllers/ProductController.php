@@ -10,7 +10,7 @@ class ProductController extends BaseController
     public function findAll()
     {
         $data = Products::paginate(
-            20,
+            100,
             ['id', 'title', 'category', 'price', 'stock', 'free_Shipping', 'rate']
         );
         if (count($data) == 0) {
