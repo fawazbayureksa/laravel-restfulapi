@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustumerController;
+use App\Models\Costumers;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +34,7 @@ Route::patch('/orders/{order}', [OrderController::class, 'update']);
 
 Route::delete('orders/{order}',[OrderController::class,'delete']);
 
+Route::get('custumers',[CustumerController::class,'findAll']);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
