@@ -1,6 +1,6 @@
 function fillCustumer(){
     $.ajax({
-        url:'api/auth',
+        url:'api/orders',
         method:'GET',
         dataType:'json',
         headers:{ 'token' : window.localStorage['token']},
