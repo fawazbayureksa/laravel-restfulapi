@@ -37,7 +37,7 @@ function refreshData() {
 
 function hapus(id) {
     $.ajax({
-        url:'api/orders'+id,
+        url:'api/orders/'+id,
         method:'DELETE',
         type:'json',
         headers:{ 'token' : window.localStorage['token']},
@@ -57,18 +57,11 @@ function edit(id) {}
 document.addEventListener("DOMContentLoaded", (c) => {
     refreshData();
 
-    // $("body").on("click", "a.link-hapus", (e) => {
-    //     var c = confirm("Yakin ingin dihapus?");
+    $("body").on("click", "a.link-hapus", (e) => {
+        var c = confirm("Yakin ingin dihapus?");
 
-    //     if (c === true) {
-    //         var id = $(e.currentTarget).data("id");
-    //         hapus(id);
-    //     }
-    // });
-    $('body').on('click','a-link-hapus',(e)=>{
-        var c = confirm('Yakin ingin mengahpus ?');
-        if (c === true){
-            var id = $(this).data('id');
+        if (c === true) {
+            var id = $(this).data("id");
             hapus(id);
         }
     });

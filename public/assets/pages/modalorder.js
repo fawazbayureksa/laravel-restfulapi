@@ -65,10 +65,6 @@ function save(id){
     });
 }
 
-    function hapus(id){
-
-    }
-
 document.addEventListener("DOMContentLoaded", (c) => {
     fillProduct();
     fillCustumer();
