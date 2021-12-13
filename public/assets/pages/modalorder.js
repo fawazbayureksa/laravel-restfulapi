@@ -66,33 +66,13 @@ function save(id){
 }
 
     function hapus(id){
-        $.ajax({
-            url:'api/orders'+id,
-            method:'DELETE',
-            type:'json',
-            headers:{ 'token' : window.localStorage['token']},
-            success:(res)=>{
-                alert('Data berhasil dihapus');
-                refreshData();
-            },
-            error: (res, status, err)=>{
-                alert('Gagal hapus data')
-            }
 
-        });
     }
 
 document.addEventListener("DOMContentLoaded", (c) => {
     fillProduct();
     fillCustumer();
 
-    $('body').on('click','a-link-hapus',(e)=>{
-        var c = confirm('Yakin ingin mengahpus ?');
-        if (c === true){
-            var id = $(this).data('id');
-            hapus(id);
-        }
-    });
 
     $('button#simpan').on('click',(e)=>{
         save();
