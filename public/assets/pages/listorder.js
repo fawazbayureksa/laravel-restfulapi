@@ -62,9 +62,9 @@ document.addEventListener("DOMContentLoaded", (c) => {
     $("body").on("click", "a.link-hapus", (e) => {
         var c = confirm("Yakin ingin dihapus?");
         if (c === true) {
-            var id = $(this).data("id");
+            // var id = $(this).data("id");
             // console.log();
-            hapus(id);
+            hapus(7);
         }
     });
 
