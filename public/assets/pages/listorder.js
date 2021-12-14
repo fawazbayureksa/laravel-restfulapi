@@ -11,9 +11,9 @@ function refreshData() {
 
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
-                var btnhapus = `<a href="#" class="btn btn-danger mx-2 link-hapus" data-id='${item.id}'>Hapus</a>`;
-                var linkEdit = `<a href="#" class="btn btn-warning link-edit" data-id='${item.id}'>Edit</a>`;
-
+                var btnhapus = `<a href='' class='btn btn-danger mx-2 link-hapus' data-id='${item.id}'>Hapus</a>`;
+                var linkEdit = `<a href='' class='btn btn-warning link-edit' data-id='${item.id}'>Edit</a>`;
+                // console.log(item.id);
                 content += `
                 <tr>
                     <td>${i + 1}</td>
@@ -46,7 +46,7 @@ function hapus(id) {
             refreshData();
         },
         error: (res, status, err)=>{
-            alert('Gagal hapus data')
+            alert('Gagal hapus data');
         }
 
     });
@@ -57,11 +57,13 @@ function edit(id) {}
 document.addEventListener("DOMContentLoaded", (c) => {
     refreshData();
 
+
+
     $("body").on("click", "a.link-hapus", (e) => {
         var c = confirm("Yakin ingin dihapus?");
-
         if (c === true) {
             var id = $(this).data("id");
+            // console.log();
             hapus(id);
         }
     });

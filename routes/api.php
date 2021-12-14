@@ -32,7 +32,7 @@ Route::get('/orders', [OrderController::class, 'findAll']);
 
 Route::patch('/orders/{order}', [OrderController::class, 'update']);
 
-Route::delete('orders/{order}',[OrderController::class,'delete']);
+Route::delete('/orders/{order}',[OrderController::class,'delete']);
 
 Route::get('custumers',[CustumerController::class,'findAll']);
 
