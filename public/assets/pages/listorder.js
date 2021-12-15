@@ -11,8 +11,8 @@ function refreshData() {
 
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
-                var btnhapus = `<a href='' class='btn btn-danger mx-2 link-hapus' data-id='${item.id}'>Hapus</a>`;
-                var linkEdit = `<a href='' class='btn btn-warning link-edit' data-id='${item.id}'>Edit</a>`;
+                var btnhapus = `<a href='#' class='btn btn-danger mx-2 link-hapus' data-id='${item.id}'>Hapus</a>`;
+                var linkEdit = `<a href='#' class='btn btn-warning link-edit' data-id='${item.id}'>Edit</a>`;
                 // console.log(item.id);
                 content += `
                 <tr>
@@ -37,22 +37,40 @@ function refreshData() {
 
 function hapus(id) {
     $.ajax({
-        url:'api/orders/'+id,
-        method:'DELETE',
-        type:'json',
-        headers:{ 'token' : window.localStorage['token']},
-        success:(res)=>{
-            alert('Data berhasil dihapus');
+        url: "api/orders/" + id,
+        method: "DELETE",
+        type: "json",
+        headers: { token: window.localStorage["token"] },
+        success: (res) => {
+            alert("Data berhasil dihapus");
             refreshData();
         },
-        error: (res, status, err)=>{
-            alert('Gagal hapus data');
-        }
-
+        error: (res, status, err) => {
+            alert("Gagal hapus data");
+        },
     });
 }
 
-function edit(id) {}
+function edit(id) {
+    $.ajax({
+        url:'api/orders/'+id,
+        method:'GET',
+        type: 'json',
+        headers: {'token' : window.localStorage['token']},
+        success:(res)=>{
+            $('#exampleModal').modal('show');
+            $('input[name=id]').val(res.data.data.id);
+            $('select[name=costumer_id]').val(res.data.costumer_id);
+            $('select[name=product_id]').val(res.data.product_id);
+            $('input[name=qty]').val(res.data.qty);
+            console.log('edit : ',res);
+        },
+
+        error:(res, status, err)=>{
+            alert("Gagal mengambil data");
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", (c) => {
     refreshData();
@@ -62,14 +80,15 @@ document.addEventListener("DOMContentLoaded", (c) => {
     $("body").on("click", "a.link-hapus", (e) => {
         var c = confirm("Yakin ingin dihapus?");
         if (c === true) {
-            // var id = $(this).data("id");
+            var id = $(e.currentTarget).data("id");
             // console.log();
-            hapus(7);
+            hapus(id);
         }
     });
 
     $("body").on("click", "a.link-edit", (e) => {
         var id = $(e.currentTarget).data("id");
+        // console.log(id);
         edit(id);
     });
 });
