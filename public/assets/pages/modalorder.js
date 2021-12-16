@@ -44,8 +44,8 @@ function fillProduct(){
 function save(id){
     $.ajax({
         url:'api/orders' + (id !== undefined ? `/${id}`:''),
-        method:id !== undefined ? 'PATCH':'POST',
-        dataType:'json',
+        method: id !== undefined ? 'PATCH':'POST',
+        type:'json',
         data:{
             'product_id' : $('select[name=product_id]').val(),
             'costumer_id' :$('select[name=costumer_id]').val(),
@@ -69,8 +69,12 @@ document.addEventListener("DOMContentLoaded", (c) => {
     fillProduct();
     fillCustumer();
 
-
     $('button#simpan').on('click',(e)=>{
-        save();
+      var id = $('input[name=id]').val();
+      if ( id === '') {
+        save()
+      }else{
+        save(id);
+      }
     });
 });

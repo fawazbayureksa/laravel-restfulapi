@@ -65,7 +65,6 @@ function edit(id) {
             $('input[name=qty]').val(res.qty);
             console.log('edit : ',res);
         },
-
         error:(res, status, err)=>{
             alert("Gagal mengambil data");
         }
