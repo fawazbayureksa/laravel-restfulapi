@@ -12,7 +12,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input type="hidden" name="id">
+          <input type="hidden" name="id" >
           <div class="mb-3">
             <label for="mb-3">Custumer</label>
             <select name="costumer_id" id="costumer_id" class="form-control">
