@@ -59,10 +59,10 @@ function edit(id) {
         headers: {'token' : window.localStorage['token']},
         success:(res)=>{
             $('#exampleModal').modal('show');
-            $('input[name=id]').val(res.data.data.id);
-            $('select[name=costumer_id]').val(res.data.costumer_id);
-            $('select[name=product_id]').val(res.data.product_id);
-            $('input[name=qty]').val(res.data.qty);
+            $('input[name=id]').val(res.id);
+            $('select[name=costumer_id]').val(res.costumer_id);
+            $('select[name=product_id]').val(res.product_id);
+            $('input[name=qty]').val(res.qty);
             console.log('edit : ',res);
         },
 
@@ -70,8 +70,7 @@ function edit(id) {
             alert("Gagal mengambil data");
         }
     });
-     // $('#exampleModal').modal('show');
-     //  console.log(id);
+
 }
 
 document.addEventListener("DOMContentLoaded", (c) => {

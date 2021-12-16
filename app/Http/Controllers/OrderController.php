@@ -91,4 +91,10 @@ class OrderController extends BaseController
             code: $hasil ? 200 : 504,
         );
     }
+
+    public function find($id)
+    {
+        // return $this->out(data:$order , status:'OK')
+        return Orders::find($id);
+    }
 }
