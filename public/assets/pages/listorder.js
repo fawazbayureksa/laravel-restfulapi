@@ -70,6 +70,8 @@ function edit(id) {
             alert("Gagal mengambil data");
         }
     });
+     // $('#exampleModal').modal('show');
+     //  console.log(id);
 }
 
 document.addEventListener("DOMContentLoaded", (c) => {
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", (c) => {
 
     $("body").on("click", "a.link-edit", (e) => {
         var id = $(e.currentTarget).data("id");
-        // console.log(id);
+       
         edit(id);
     });
 });
